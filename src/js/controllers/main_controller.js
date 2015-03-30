@@ -39,7 +39,7 @@
             $scope.showHome = function() {
                 SharedState.turnOff('uiSidebarLeft');
                 if (this.current_page != '') {
-                    fadeToPage('');
+                    fadeToPage('home');
                 }
             }
             $scope.showAlerts = function () {
@@ -77,6 +77,10 @@
                 if (this.current_page != 'calendar') {
                     fadeToPage('calendar');
                 }
+            }
+            $scope.logout = function () {
+                SharedState.turnOff('uiSidebarLeft');
+                $location.path('/');
             }
 
             // Declare page fading

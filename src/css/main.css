@@ -138,3 +138,36 @@
   width: 110px;
   margin: 0px auto;
 }
+
+/*switch colors*/
+.switch
+{
+  background-color: #e74c3c;
+  border: 1px solid #e74c3c;
+}
+.switch .switch-handle
+{
+  border: 1px solid #e74c3c;
+}
+.switch.active
+{
+  background-color: #3498db;
+  border: 1px solid #3498db;
+}
+.switch.active .switch-handle
+{
+  border-color: #3498db;
+}
+
+/*logout button*/
+#logout-btn
+{
+  padding-right: 6px;
+  font-size: 25px;
+  vertical-align: middle;
+}
+#logout-btn i
+{
+  line-height: 50px;
+  color: #3498db;
+}

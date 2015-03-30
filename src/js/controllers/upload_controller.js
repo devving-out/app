@@ -27,8 +27,8 @@
 
                 $http.post("http://54.69.7.81/taylor/html/app_api/methods/post/lead", {lead : new_lead})
                     .success(function (data, status, headers, config) {
-                        console.log(response);
                         var response = angular.fromJson(data);
+                        console.log(response);
                         if (response.status) {
                             $scope.response.status = true;
                             $scope.response.message = response.message;

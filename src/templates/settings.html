@@ -24,26 +24,26 @@
             <div ng-show="userSettingsForm.email.$invalid && submitted" class="alert alert-danger form-alert">
                 <i class="fa fa-exclamation-triangle error-icon"></i>Please provide a username
             </div>
-        </div>  
+        </div>
 
         <div class="row">
         	<div class="col-xs-4">
 				<div class="form-group">
 					<label for="user-send-alerts">Send Alerts</label>
 					<ui-switch ng-model="user.send_alerts" id="user-send-alerts" name="send_alerts"></ui-switch>
-				</div>        		
+				</div>
         	</div>
         	<div class="col-xs-4">
 				<div class="form-group">
 					<label for="user-active">Status</label>
 					<ui-switch ng-model="user.active" id="input-active" name="active"></ui-switch>
-				</div>        		
+				</div>
         	</div>
         	<div class="col-xs-4">
 				<div class="form-group">
-					<label for="user-calendering">Calendering</label>
+					<label for="user-calendering">Calendaring</label>
 					<ui-switch ng-model="user.calendering" id="user-calendering" name="calendering"></ui-switch>
-				</div>        		
+				</div>
         	</div>
         </div>
         <button type="submit" class="btn btn-primary submit-btn" ng-show="userSettingsForm.$dirty">

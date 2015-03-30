@@ -20,6 +20,7 @@
 		<!-- chartist -->
 		<link rel="stylesheet" href="css/chartist.min.css"/>
 		<!-- page specific css -->
+		<link rel="stylesheet" href="css/login.css"/>
 		<link rel="stylesheet" href="css/sidebar.css"/>
 		<link rel="stylesheet" href="css/home.css"/>
 		<link rel="stylesheet" href="css/alerts.css"/>
@@ -47,6 +48,9 @@
 
 	  	<!-- Navbars -->
 		<div class="navbar navbar-app navbar-absolute-top app-nav">
+			<div class="btn-group pull-right" id="logout-btn">
+				<i class="fa fa-sign-out" style="float:right;" ng-click="logout();"></i>
+			</div>
 			<div class="btn-group pull-left">
 				<div ui-toggle="uiSidebarLeft" class="btn sidebar-toggle">
 					<i class="fa fa-bars"></i> Menu

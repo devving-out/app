@@ -1,0 +1,38 @@
+<div ng-controller="LoginController as login" class="container" id="login-container">
+    <div class="title-container login">
+        <i class="fa fa-lock fa-3x"></i><span class="title-text">Login</span>
+    </div>
+
+    <div ng-show="login_failed" class="alert alert-danger form-alert">
+        <i class="fa fa-exclamation-triangle error-icon"></i>Login Failed
+    </div>
+
+    <form ng-submit="submitLogin(userLoginForm.$valid)" name="userLoginForm" novalidate>
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" name="username" class="form-control" id="username" ng-model="user.username" placeholder="Type your Username" required>
+            <div ng-show="userLoginForm.username.$invalid && submitted" class="alert alert-danger form-alert">
+                <i class="fa fa-exclamation-triangle error-icon"></i>Username Required
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" name="password" class="form-control" id="password" ng-model="user.password" placeholder="Type your Password" required>
+            <div ng-show="userLoginForm.password.$invalid && submitted" class="alert alert-danger form-alert">
+                <i class="fa fa-exclamation-triangle error-icon"></i>Password Required
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="form-group">
+                    <label for="remember-me">Remember Me</label>
+                    <ui-switch ng-model="user.remember_me" id="remember-me" name="remember_me"></ui-switch>
+                </div>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary submit-btn" >
+            Submit
+        </button>
+    </form>
+</div>
