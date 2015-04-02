@@ -5,7 +5,7 @@
 	<div class="panel-group" ng-show="leads.length">
 		<div class="list-group">
 			<div class="list-group-item" ng-repeat="lead in leads" style="cursor:pointer" ng-click="openAlert(lead)">
-				<div style="width:10px; height:10px; border-radius:5px; display:inline-block; margin-right:5px; background-color:{{lead.alert_class}}"></div>{{lead.first_name}} {{lead.last_name}}<i class="fa fa-plus pull-right"></i>
+				<div style="width:8px; height:8px; border-radius:4px; display:inline-block; margin-right:5px; background-color:{{lead.alert_class}}"></div>{{lead.first_name}} {{lead.last_name}}<i class="fa fa-info-circle pull-right" style="color:#3498db"></i>
 			</div>
 		</div>
 	</div>

@@ -36,8 +36,8 @@
                         return lead;
                     }
                 }
-            });            
-        };     
+            });
+        };
 
         // Define initialize
         function init() {
@@ -52,22 +52,22 @@
             if (response.status) {
               var leads = response.data;
               var i = 0;
+              var colors = ['#3498db', '#f39c12', '#e74c3c']
+
               angular.forEach(leads, function (value, key) {
-                var alert_class = '';
-                if (i == 0) { 
-                  i++;
-                  leads[key].alert_class = '#00bc8c';
-                } else if (i == 1) {
-                  i++;
-                  leads[key].alert_class = '#f39c12';
-                } else {
-                  i = 0;
-                  leads[key].alert_class = '#e74c3c';
-                }
+                leads[key].alert_class = colors[getRandomInt(0, colors.length - 1)];
               });
       				$scope.leads = leads;
       			}
       		});
+        }
+
+        /**
+         * Returns a random integer between min (inclusive) and max (inclusive)
+         * Using Math.round() will give you a non-uniform distribution!
+         */
+        function getRandomInt(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
         }
 
         // Call initialize
