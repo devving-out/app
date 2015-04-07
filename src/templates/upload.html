@@ -2,32 +2,35 @@
     <div class="title-container upload">
         <i class="fa fa-user fa-3x title-icon"></i><span class="title-text">Upload a Lead</span>
     </div>
-    <div ng-class="response.status ? 'alert alert-success' : 'alert alert-warning'" ng-show="response.message.length">{{response.message}}</div>
+    <div style="margin-top:15px" ng-class="response.status ? 'alert alert-success' : 'alert alert-danger'" ng-show="response.message.length">{{response.message}}</div>
     <form ng-submit="uploadLead(uploadLeadForm.$valid)" name="uploadLeadForm" novalidate>
         <div class="form-group">
             <label for="input-first-name">First Name</label>
             <input type="text" name="firstName" class="form-control" id="input-first-name" placeholder="First Name" ng-model="lead.first_name" required>
-            <div ng-show="uploadLeadForm.firstName.$invalid && submitted" class="alert alert-danger form-alert">
+            <div ng-show="uploadLeadForm.firstName.$invalid && submitted && !response.status" class="alert alert-danger form-alert">
                 <i class="fa fa-exclamation-triangle error-icon"></i>Oops! Forgot the lead's first name!
             </div>
         </div>
         <div class="form-group">
             <label for="input-last-name">Last Name</label>
             <input type="text" name="lastName" class="form-control" id="input-last-name" placeholder="Last Name" ng-model="lead.last_name" required>
-            <div ng-show="uploadLeadForm.lastName.$invalid && submitted" class="alert alert-danger form-alert">
+            <div ng-show="uploadLeadForm.lastName.$invalid && submitted && !response.status" class="alert alert-danger form-alert">
                 <i class="fa fa-exclamation-triangle error-icon"></i>Oops! Forgot the lead's last name
             </div>
         </div>
         <div class="form-group">
             <label for="input-email">Email</label>
             <input type="email" name="email" class="form-control" id="input-email" placeholder="Email" ng-model="lead.email" required>
-            <div ng-show="uploadLeadForm.email.$invalid && submitted" class="alert alert-danger form-alert">
-                <i class="fa fa-exclamation-triangle error-icon"></i>Oope! Forgot the lead's email!
+            <div ng-show="uploadLeadForm.email.$invalid && submitted && !response.status" class="alert alert-danger form-alert">
+                <i class="fa fa-exclamation-triangle error-icon"></i>Oops! Forgot the lead's email!
             </div>
         </div>
         <div class="form-group">
             <label for="input-email">Phone</label>
-            <input type="text" class="form-control" id="input-phone" placeholder="Phone" ng-model="lead.phone">
+            <input type="text" class="form-control" id="input-phone" placeholder="Phone" ng-model="lead.phone" name="phone" required>
+            <div ng-show="uploadLeadForm.phone.$invalid && submitted && !response.status" class="alert alert-danger form-alert">
+                <i class="fa fa-exclamation-triangle error-icon"></i>Oops! Forgot the lead's phone!
+            </div>            
         </div>
         <div class="form-group">
             <label for="input-campaign">Messaging Campaign</label>
@@ -35,14 +38,14 @@
             name="messagingCampaign"
             class="form-control"
             ng-model="lead.messaging_campaign"
-            ng-options="campaign as campaign.name for campaign in messaging_campaigns" required>
-                <option value="">Select One</option>
-            </select>
-            <div ng-show="uploadLeadForm.messagingCampaign.$invalid && submitted" class="alert alert-danger form-alert">
+            ng-init="lead.messaging_campaign = messaging_campaigns[0]"
+            ng-change="campaign_invalid = false"
+            ng-options="campaign as campaign.name for campaign in messaging_campaigns" required></select>
+            <div ng-show="campaign_invalid && submitted && !response.status" class="alert alert-danger form-alert">
                 <i class="fa fa-exclamation-triangle error-icon"></i>Oops! Forgot the lead's campaign!
             </div>
         </div>
-        <button type="submit" class="btn btn-primary submit-btn">
+        <button type="submit" class="btn btn-primary submit-btn" style="border-color:#3498db">
             <i class="fa fa-upload" style="margin-right:10px;"></i>Upload
         </button>
     </form>
