@@ -3,48 +3,70 @@
         <i class="fa fa-cogs fa-3x"></i><span class="title-text">Settings</span>
     </div>
 
+    <div ng-show="submitted && valid_submit" class="alert alert-success form-alert">
+        <i class="fa fa-check" style="margin-right:5px;"></i>User information updated!
+    </div>
+
     <form ng-submit="submitSettings(userSettingsForm.$valid)" name="userSettingsForm" novalidate>
         <div class="form-group">
             <label for="user-first-name">First Name</label>
-            <input type="text" name="first_name" class="form-control" id="user-first-name" ng-model="user.first_name" required>
+            <input type="text" name="first_name" class="form-control" id="user-first-name" ng-model="user.first_name" ng-change="settings.resetSubmitted()" required>
             <div ng-show="userSettingsForm.first_name.$invalid && submitted" class="alert alert-danger form-alert">
                 <i class="fa fa-exclamation-triangle error-icon"></i>Please provide your first name
             </div>
         </div>
         <div class="form-group">
             <label for="user-last-name">Last Name</label>
-            <input type="text" name="last_name" class="form-control" id="user-last-name" ng-model="user.last_name" required>
+            <input type="text" name="last_name" class="form-control" id="user-last-name" ng-model="user.last_name" ng-change="settings.resetSubmitted()" required>
             <div ng-show="userSettingsForm.last_name.$invalid && submitted" class="alert alert-danger form-alert">
                 <i class="fa fa-exclamation-triangle error-icon"></i>Please provide your last name
             </div>
         </div>
         <div class="form-group">
-            <label for="input-username">Username</label>
-            <input type="text" name="email" class="form-control" id="input-username" ng-model="user.username" required>
+            <label for="input-email">Email</label>
+            <input type="text" name="email" class="form-control" id="input-email" ng-model="user.email" ng-change="settings.resetSubmitted()" required>
             <div ng-show="userSettingsForm.email.$invalid && submitted" class="alert alert-danger form-alert">
-                <i class="fa fa-exclamation-triangle error-icon"></i>Please provide a username
+                <i class="fa fa-exclamation-triangle error-icon"></i>Please provide an email
             </div>
         </div>
 
-        <div class="row">
-        	<div class="col-xs-4">
-				<div class="form-group">
-					<label for="user-send-alerts">Send Alerts</label>
-					<ui-switch ng-model="user.send_alerts" id="user-send-alerts" name="send_alerts"></ui-switch>
-				</div>
-        	</div>
-        	<div class="col-xs-4">
-				<div class="form-group">
-					<label for="user-active">Status</label>
-					<ui-switch ng-model="user.active" id="input-active" name="active"></ui-switch>
-				</div>
-        	</div>
-        	<div class="col-xs-4">
-				<div class="form-group">
-					<label for="user-calendering">Calendaring</label>
-					<ui-switch ng-model="user.calendering" id="user-calendering" name="calendering"></ui-switch>
-				</div>
-        	</div>
+
+        <div class="form-group">
+            <label for="switch-group">Notifications</label>
+            <div id="switch-group">
+            <div class="row">
+                <div class="col-xs-6" style="padding-top:5px;">
+                    New Lead
+                </div>
+                <div class="col-xs-6 pull left">
+                    <ui-switch ng-model="user.new_lead_alert"></ui-switch>
+                </div>
+            </div>
+            <div class="row" style="margin-top:10px;">
+                <div class="col-xs-6" style="padding-top:5px;">
+                    Response
+                </div>
+                <div class="col-xs-6 pull left">
+                    <ui-switch ng-model="user.response_alert"></ui-switch>
+                </div>
+            </div>
+            <div class="row" style="margin-top:10px;">
+                <div class="col-xs-6" style="padding-top:5px;">
+                    Daily Digest
+                </div>
+                <div class="col-xs-6 pull left">
+                    <ui-switch ng-model="user.daily_digest_alert"></ui-switch>
+                </div>
+            </div>                        
+            <div class="row" style="margin-top:10px;">
+                <div class="col-xs-6" style="padding-top:5px;">
+                    Weekly Digest
+                </div>
+                <div class="col-xs-6 pull left">
+                    <ui-switch ng-model="user.weekly_digest_alert"></ui-switch>
+                </div>
+            </div>
+            </div>
         </div>
         <button type="submit" class="btn btn-primary submit-btn" ng-show="userSettingsForm.$dirty">
         	<i class="fa fa-upload" style="margin-right:10px;"></i>Update

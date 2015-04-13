@@ -102,12 +102,12 @@
             }
 
 
-            //splash screen
+            // Splash screen
             angular.element(document).ready(function () {
                 $timeout(function(){
                     that.load_fade = 1;
                 }, SPLASH_DELAY);
-                // that.ready = 1;
+
                 $timeout(function(){
                     that.ready = 1;
                 }, FADE_DELAY + SPLASH_DELAY);
