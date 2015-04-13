@@ -67,6 +67,7 @@
     app.service('CalendarEvents', ['$q', function ($q) {
         var self = this;
 
+        // Default events array
         this.events = [
           {
             title: 'Lead Followup - Taylor Birkeland', // The title of the event

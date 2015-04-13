@@ -2,8 +2,8 @@
     var app = angular.module('App.controllers.Login', []);
     app.controller(
         'LoginController',
-        ['$scope', '$location', '$http',
-        function($scope, $location, $http) {
+        ['$scope', '$location', '$http', '$window', function ($scope, $location, $http, $window) {
+        	
         $scope.user = {
             username: '',
             password: '',
@@ -29,7 +29,7 @@
                     }
                 })
                 .error(function (data, status, headers, config) {
-                    console.log('FATAL ERROR');
+                    $window.alert('Error Logging In!');
                 });
             }
         };
